@@ -12,6 +12,52 @@ code {
     monospace;
 }
 
+body {
+  font-family: "Averia Serif Libre", cursive;
+  background: fixed
+    linear-gradient(to top, rgba(42, 157, 143, 0.15), rgba(42, 157, 143, 0));
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+h6 {
+  color: #9899ac;
+}
+
 .logo-font {
   font-family: "Averia Serif Libre", cursive;
+}
+
+.attributeCards {
+  border: none;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+.attributeCards:hover {
+  transition: ease-in-out 700ms;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar {
+  background: linear-gradient(
+    to right,
+    rgba(42, 157, 143, 0.5),
+    rgba(255, 255, 255, 1)
+  );
+}
+
+.btn {
+  border-color: #4ca1a3;
+  background-color: #4ca1a3;
+}
+
+.btn:hover {
+  border-color: #e9c46a;
+  background-color: #e9c46a;
+  color: #264653;
+}
+
+.nav:hover {
+  color: #e9c46a;
 }
