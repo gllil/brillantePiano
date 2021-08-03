@@ -31,7 +31,6 @@ h6 {
 
 .attributeCards {
   border: none;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .attributeCards:hover {
   transition: ease-in-out 700ms;
@@ -40,24 +39,25 @@ h6 {
 }
 
 .navbar {
-  background: linear-gradient(
-    to right,
-    rgba(42, 157, 143, 0.5),
-    rgba(255, 255, 255, 1)
-  );
+  background: linear-gradient(to right, #9cd1ca, rgba(255, 255, 255, 1));
 }
 
 .btn {
-  border-color: #4ca1a3;
-  background-color: #4ca1a3;
+  border-color: #e96c4e;
+  background-color: #e96c4e;
 }
 
 .btn:hover {
-  border-color: #e9c46a;
-  background-color: #e9c46a;
-  color: #264653;
+  border-color: #4ca1a3;
+  background-color: #4ca1a3;
+  color: #511281;
 }
 
 .nav:hover {
   color: #e9c46a;
+}
+
+a:link {
+  color: #000000;
+  text-decoration: none;
 }

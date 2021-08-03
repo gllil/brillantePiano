@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 import About from "./pages/About";
 import Calendar from "./pages/Calendar";
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/about" component={About} />
         <Route exact path="/faqs" component={Faq} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

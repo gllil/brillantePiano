@@ -3,7 +3,7 @@ import logoImg from "../assets/images/brillantePianoLogoImage.png";
 
 const Navigation = () => {
   return (
-    <Navbar collapseOnSelect expand="md">
+    <Navbar collapseOnSelect expand="md" sticky="top">
       <Container>
         <Navbar.Brand className="logo-font" href="/">
           <h1>
