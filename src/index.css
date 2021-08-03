@@ -48,9 +48,8 @@ h6 {
 }
 
 .btn:hover {
-  border-color: #4ca1a3;
-  background-color: #4ca1a3;
-  color: #511281;
+  border-color: #bf5f47;
+  background-color: #bf5f47;
 }
 
 .nav:hover {
@@ -60,4 +59,8 @@ h6 {
 a:link {
   color: #000000;
   text-decoration: none;
+}
+
+a:hover {
+  color: #bf5f47;
 }
