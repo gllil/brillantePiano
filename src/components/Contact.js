@@ -9,23 +9,22 @@ const Contact = () => {
 
       <Row className="justify-content-center">
         <Col xs={12} md={6}>
-          <h4>Send me a Message</h4>
           <Form>
             <Form.Group>
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name="name" />
+              <Form.Control type="text" name="name" required />
             </Form.Group>
             <Form.Group>
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" name="email" />
+              <Form.Control type="email" name="email" required />
             </Form.Group>
             <Form.Group>
               <Form.Label>Phone</Form.Label>
-              <Form.Control type="tel" name="phone" />
+              <Form.Control type="tel" name="phone" required />
             </Form.Group>
             <Form.Group>
               <Form.Label>Message</Form.Label>
-              <Form.Control as="textarea" type="text" name="message" />
+              <Form.Control as="textarea" type="text" name="message" required />
             </Form.Group>
             <Button className="mt-3">Submit</Button>
           </Form>
@@ -34,7 +33,7 @@ const Contact = () => {
       <Row className="justify-content-center mt-5">
         <Col xs={12} md={6}>
           <Row className="justify-content-center">
-            <Col xs={6}>
+            <Col xs={12} className="text-center">
               <a
                 href="mailto:camillerweber@gmail.com"
                 target="_blank"
@@ -47,7 +46,7 @@ const Contact = () => {
             </Col>
           </Row>
           <Row className="justify-content-center mt-2">
-            <Col xs={6}>
+            <Col xs={12} className="text-center">
               <a href="tel:4357576530">
                 <h5>
                   <i className="fas fa-phone"></i> (435) 757-6530

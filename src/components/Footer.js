@@ -12,7 +12,7 @@ const Footer = () => {
           </h4>
         </Nav.Item>
         <Nav.Item>
-          <h5>Camille Weber M.M.</h5>
+          <h5>Camille Weber, M.M.</h5>
         </Nav.Item>
         <Nav.Item>
           <h5>

@@ -19,7 +19,12 @@ const Home = () => {
           <Button className="mt-3">Schedule a lesson</Button>
         </Col>
         <Col className="text-center">
-          <img src={pianoGirlImg} width="400px" alt="girl playing piano" />
+          <img
+            src={pianoGirlImg}
+            width="400px"
+            className="colorfulPiano"
+            alt="girl on piano"
+          />
         </Col>
       </Row>
       <Row className="mt-5 justify-content-center">
