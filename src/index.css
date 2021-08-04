@@ -1,6 +1,7 @@
 /* colors being used:
 subtext - h6 tags #9899ac
 background and navbar color - #5fdedc in hex or rgba(95, 222, 220, 1) in rgba
+button color - #e96c4e
 */
 /* fonts used: 
 font-family: "Averia Serif Libre", cursive;
@@ -9,20 +10,20 @@ font-family: "Averia Serif Libre", cursive;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 body {
-  font-family: 'Averia Serif Libre', cursive;
+  font-family: "Averia Serif Libre", cursive;
   background: fixed
     linear-gradient(to top, rgba(95, 222, 220, 0.2), rgba(95, 222, 220, 0));
   background-position: center;
@@ -36,7 +37,7 @@ h6 {
 }
 
 .logo-font {
-  font-family: 'Averia Serif Libre', cursive;
+  font-family: "Averia Serif Libre", cursive;
 }
 
 .attributeCards {
@@ -73,4 +74,8 @@ a:link {
 
 a:hover {
   color: #bf5f47;
+}
+
+.shortPageContainer {
+  height: calc(100vh - 251px);
 }
