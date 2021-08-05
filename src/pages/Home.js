@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import handShakeIcon from "../assets/icons/hand-shake.png";
-import pianoGirlImg from "../assets/images/pianoGirl.png";
+import waterColorPiano from "../assets/images/piano3.png";
 import Contact from "../components/Contact";
 
 const Home = () => {
@@ -19,12 +19,7 @@ const Home = () => {
           <Button className="mt-3">Schedule a lesson</Button>
         </Col>
         <Col className="text-center">
-          <img
-            src={pianoGirlImg}
-            width="400px"
-            className="colorfulPiano"
-            alt="girl on piano"
-          />
+          <img src={waterColorPiano} width="400px" alt="water colors piano" />
         </Col>
       </Row>
       <Row className="mt-5 justify-content-center">
