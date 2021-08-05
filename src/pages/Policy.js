@@ -1,5 +1,13 @@
+import { Row, Col, Container } from "react-bootstrap";
+
 const Policy = () => {
-  return <div></div>;
+  return (
+    <Container>
+      <Row>
+        <Col></Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default Policy;
