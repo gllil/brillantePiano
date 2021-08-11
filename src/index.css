@@ -68,6 +68,16 @@ h6 {
   color: #e9c46a;
 }
 
+.fc .fc-col-header-cell-cushion,
+.fc .fc-daygrid-day-number {
+  color: #000000;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
 a:link {
   color: #000000;
   text-decoration: none;
@@ -78,7 +88,7 @@ a:hover {
 }
 
 .shortPageContainer {
-  height: calc(100vh - 251px);
+  min-height: calc(100vh - 251px);
 }
 
 /* .colorfulPiano {
