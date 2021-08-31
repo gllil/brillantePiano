@@ -59,6 +59,11 @@ h6 {
   background-color: #e96c4e;
 }
 
+.btn:focus {
+  background-color: #bf5f47;
+  border-color: #bf5f47;
+}
+
 .btn:hover {
   border-color: #bf5f47;
   background-color: #bf5f47;
@@ -91,6 +96,131 @@ a:hover {
   min-height: calc(100vh - 251px);
 }
 
-/* .colorfulPiano {
-  opacity: 0.7;
+.tuitionDetailsBox {
+  padding-top: 100px;
+}
+
+.badge {
+  background-color: #000;
+  color: #fff;
+}
+
+.badgeWrapper {
+  margin-top: -20px;
+}
+
+.tuitionCards {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: #000;
+  border: none;
+  height: 100%;
+}
+
+.card-img-overlay {
+  color: #fff;
+  width: 25%;
+}
+
+.custom-shape-divider-bottom-1629199231 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1629199231 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.5px);
+  height: 100%;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1629199231 .shape-fill {
+  fill: #ffffff;
+}
+
+.imageName {
+  position: relative;
+  bottom: 40px;
+}
+
+.list-group-item,
+.list-group {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0px;
+}
+.videoWrapper iframe {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.aboutMeImagesWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0px;
+}
+
+.camilleImg {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  width: 50%;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+}
+.youngCamille1Img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  width: 30%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+.youngCamille2Img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  width: 50%;
+  top: 0;
+  right: 30%;
+}
+/* .tuitionCards:hover {
+  transition: ease-in-out 700ms;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 } */
+.accordion-button {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(95, 222, 220, 0.2);
+  color: #000;
+}
+.accordion-button:focus {
+  background-color: #5fdedc;
+  color: black;
+  border-color: rgba(95, 222, 220, 0.1);
+}
+
+@media only screen and (max-width: 575px) {
+  .badgeWrapper {
+    margin-top: -10px;
+  }
+}

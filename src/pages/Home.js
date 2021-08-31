@@ -19,7 +19,9 @@ const Home = () => {
             I teach technique, reading, composition, theory, and performance
             pieces so each student can progress and love what they do.
           </h6>
-          <Button className="mt-3">Schedule a lesson</Button>
+          <Button className="mt-3" href="#contactMe">
+            Get Started
+          </Button>
         </Col>
         <Col className="text-center">
           <img src={waterColorPiano} width="400px" alt="water colors piano" />

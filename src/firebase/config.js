@@ -1,5 +1,9 @@
 // imported firebase after npm install
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/storage";
+import "firebase/auth";
+import "firebase/functions";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -17,6 +21,7 @@ firebase.initializeApp(firebaseConfig);
 const firestore = firebase.firestore();
 const storage = firebase.storage();
 const auth = firebase.auth();
+const functions = firebase.functions();
 
 //exporting deconstructed variables for multiple reuse in other components
-export { firestore, storage, auth };
+export { firestore, storage, auth, functions };

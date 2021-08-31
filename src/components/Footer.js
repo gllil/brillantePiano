@@ -4,7 +4,7 @@ import logoImg from "../assets/images/brillantePianoLogoImage.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <Navbar className="justify-content-center">
+    <Navbar className="justify-content-center" sticky="bottom">
       <Nav className="flex-column align-items-center">
         <Nav.Item>
           <h4>
