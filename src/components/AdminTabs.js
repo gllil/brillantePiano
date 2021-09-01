@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Tab, Tabs } from 'react-bootstrap';
+import { Button, Tab, Tabs } from 'react-bootstrap';
 
 function AdminTabs() {
   const [tab, setActiveTab] = useState('tuition');
-  console.log(tab);
+
+  const handleClick = (e) => {
+    console.log(`Send to api/${tab}`);
+  };
 
   return (
     <Tabs
@@ -13,16 +16,16 @@ function AdminTabs() {
       className='mb-3'
     >
       <Tab eventKey='tuition' title='Tuition'>
-        {tab}
+        <Button onClick={handleClick}>Send to {tab} API</Button>
       </Tab>
       <Tab eventKey='policy' title='Policy'>
-        {tab}
+        <Button onClick={handleClick}>Send to {tab} API</Button>
       </Tab>
       <Tab eventKey='about' title='About'>
-        {tab}
+        <Button onClick={handleClick}>Send to {tab} API</Button>
       </Tab>
       <Tab eventKey='faqs' title='FAQs'>
-        {tab}
+        <Button onClick={handleClick}>Send to {tab} API</Button>
       </Tab>
     </Tabs>
   );
