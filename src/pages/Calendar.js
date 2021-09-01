@@ -2,31 +2,18 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { Container, Modal } from "react-bootstrap";
-import { firestore } from "../firebase/config";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DateTime } from "luxon";
+import useFirestore from "../hooks/useFirestore";
 
 const Calendar = () => {
-  const [calendarItems, setCalendarItems] = useState([]);
+  const { calendarItems } = useFirestore("calendarItems");
   const [calendarItem, setCalendarItem] = useState({});
   const [eventModalOpen, setEventModalOpen] = useState(false);
-
-  useEffect(() => {
-    const calendarItemsRef = firestore.collection("calendarItems");
-
-    calendarItemsRef.onSnapshot((snap) => {
-      let events = [];
-      snap.forEach((doc) => {
-        events.push({ ...doc.data(), id: doc.id });
-      });
-      setCalendarItems(events);
-    });
-  }, []);
 
   console.log(calendarItems);
 
   const handleDate = (dateStr) => {
-    console.log(dateStr);
     let dateObj = DateTime.fromISO(dateStr);
     let newFormat = dateObj.toLocaleString(DateTime.DATE_FULL);
     return newFormat;
@@ -39,13 +26,23 @@ const Calendar = () => {
 
   const handleDateClick = (info) => {
     if (info) {
-      setCalendarItem({
-        title: info.event.title,
-        date: handleDate(info.event.startStr),
-        start: handleTime(info.event.startStr),
-        end: handleTime(info.event.endStr),
-        description: info.event._def.extendedProps.description,
-      });
+      if (info.event.allDay) {
+        setCalendarItem({
+          title: info.event.title,
+          date: handleDate(info.event.startStr),
+          description: info.event._def.extendedProps.description,
+          allDay: info.event.allDay,
+        });
+      } else {
+        setCalendarItem({
+          title: info.event.title,
+          date: handleDate(info.event.startStr),
+          start: handleTime(info.event.startStr),
+          end: handleTime(info.event.endStr),
+          description: info.event._def.extendedProps.description,
+        });
+      }
+
       setEventModalOpen(true);
     }
     console.log(info);
@@ -67,10 +64,17 @@ const Calendar = () => {
           <h3>{calendarItem.title}</h3>
         </Modal.Header>
         <Modal.Body>
-          <h5>{calendarItem.date}</h5>
-          <h5>
-            {calendarItem.start} - {calendarItem.end}
-          </h5>
+          {calendarItem.allDay ? (
+            <h5>{calendarItem.date}</h5>
+          ) : (
+            <>
+              <h5>{calendarItem.date}</h5>
+              <h5>
+                {calendarItem.start} - {calendarItem.end}
+              </h5>
+            </>
+          )}
+
           <h5>{calendarItem.description}</h5>
         </Modal.Body>
       </Modal>

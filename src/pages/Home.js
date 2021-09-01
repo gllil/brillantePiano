@@ -11,10 +11,7 @@ const Home = () => {
     <Container className="mb-3">
       <Row className="mt-5">
         <Col xs={12} lg={5}>
-          <h2>
-            Music is meant to be enjoyed, and is enjoyed most when a student
-            feels capable.
-          </h2>
+          <h2>Music is meant to be enjoyed.</h2>
           <h6 className="mt-3">
             I teach technique, reading, composition, theory, and performance
             pieces so each student can progress and love what they do.

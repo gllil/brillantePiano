@@ -75,7 +75,7 @@ const Contact = () => {
         <Col className="text-center">
           {success && (
             <h4 style={{ color: "green" }}>
-              Message has been sent successfull!
+              Message has been sent successfully!
             </h4>
           )}
         </Col>
