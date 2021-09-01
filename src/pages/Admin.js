@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Col,
   Container,
@@ -7,19 +7,21 @@ import {
   Button,
   Spinner,
   ListGroup,
-} from "react-bootstrap";
-import { auth, firestore } from "../firebase/config";
-import { DateTime } from "luxon";
-import useFirestore from "../hooks/useFirestore";
+} from 'react-bootstrap';
+import { auth, firestore } from '../firebase/config';
+import { DateTime } from 'luxon';
+import useFirestore from '../hooks/useFirestore';
+
+import AdminTabs from '../components/AdminTabs';
 
 const Admin = () => {
-  const { calendarItems } = useFirestore("calendarItems");
+  const { calendarItems } = useFirestore('calendarItems');
   const [calendarForm, setCalendarForm] = useState({});
   const [successAddEvent, setsuccessAddEvent] = useState(false);
   const [addEventLoad, setAddEventLoad] = useState(false);
   const [allDayChecked, setAllDayChecked] = useState(false);
-  const calendarRef = firestore.collection("calendarItems");
-  const addEventForm = document.getElementById("addEventForm");
+  const calendarRef = firestore.collection('calendarItems');
+  const addEventForm = document.getElementById('addEventForm');
 
   const handleDate = (dateStr) => {
     let dateObj = DateTime.fromISO(dateStr);
@@ -93,7 +95,7 @@ const Admin = () => {
       .doc(itemId)
       .delete()
       .then(() => {
-        console.log("Deleted Successfully");
+        console.log('Deleted Successfully');
       })
       .catch((err) => console.error(err));
   };
@@ -104,29 +106,29 @@ const Admin = () => {
   };
 
   return (
-    <div className="shortPageContainer mb-5">
+    <div className='shortPageContainer mb-5'>
       <Container>
         <Row>
-          <Col className="text-end">
-            <Button onClick={handleLogOut} size="sm" className="mt-2">
+          <Col className='text-end'>
+            <Button onClick={handleLogOut} size='sm' className='mt-2'>
               Logout
             </Button>
           </Col>
         </Row>
         <Row>
-          <Col className="text-center m-3">
+          <Col className='text-center m-3'>
             <h2>Manage Page</h2>
           </Col>
         </Row>
         <Row>
           <Col>
             <Row>
-              <Col className="text-center m-3">
+              <Col className='text-center m-3'>
                 <h4>Add Calendar Event</h4>
               </Col>
             </Row>
             <Form
-              id="addEventForm"
+              id='addEventForm'
               onSubmit={handleCalendarFormSubmit}
               onChange={handleCalendarFormChange}
             >
@@ -134,7 +136,7 @@ const Admin = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label>Event Name</Form.Label>
-                    <Form.Control type="text" name="title" required />
+                    <Form.Control type='text' name='title' required />
                   </Form.Group>
                 </Col>
               </Row>
@@ -143,9 +145,9 @@ const Admin = () => {
                   <Form.Group>
                     <Form.Label>Event Description</Form.Label>
                     <Form.Control
-                      as="textarea"
-                      type="text"
-                      name="description"
+                      as='textarea'
+                      type='text'
+                      name='description'
                       required
                     />
                   </Form.Group>
@@ -155,12 +157,12 @@ const Admin = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label>Event Date</Form.Label>
-                    <Form.Control type="date" name="date" required />
+                    <Form.Control type='date' name='date' required />
                     <Form.Check
                       onChange={handleCheckBox}
-                      type="checkbox"
-                      name="allDay"
-                      label="All Day Event"
+                      type='checkbox'
+                      name='allDay'
+                      label='All Day Event'
                     />
                   </Form.Group>
                 </Col>
@@ -169,8 +171,8 @@ const Admin = () => {
                     <Form.Label>Start Time</Form.Label>
                     <Form.Control
                       disabled={allDayChecked}
-                      type="time"
-                      name="startTime"
+                      type='time'
+                      name='startTime'
                     />
                   </Form.Group>
                 </Col>
@@ -179,20 +181,20 @@ const Admin = () => {
                     <Form.Label>End Time</Form.Label>
                     <Form.Control
                       disabled={allDayChecked}
-                      type="time"
-                      name="endTime"
+                      type='time'
+                      name='endTime'
                     />
                   </Form.Group>
                 </Col>
               </Row>
               <Row>
-                <Col className="text-end">
+                <Col className='text-end'>
                   {addEventLoad ? (
-                    <Button className="mt-3" disabled>
-                      <Spinner size="sm" animation="border" />
+                    <Button className='mt-3' disabled>
+                      <Spinner size='sm' animation='border' />
                     </Button>
                   ) : (
-                    <Button className="mt-3" type="submit">
+                    <Button className='mt-3' type='submit'>
                       Add Event
                     </Button>
                   )}
@@ -207,19 +209,19 @@ const Admin = () => {
           </Col>
         </Row>
         <Row>
-          <Col className="text-center m-3">
+          <Col className='text-center m-3'>
             <h5>Manage Calendar Events</h5>
           </Col>
         </Row>
         <Row>
           <Col>
             <ListGroup
-              className="m-5 overflow-auto"
-              style={{ maxHeight: "1000px" }}
+              className='m-5 overflow-auto'
+              style={{ maxHeight: '1000px' }}
             >
               {calendarItems.map((item) => (
                 <ListGroup.Item key={item.id}>
-                  <Row className="align-items-center">
+                  <Row className='align-items-center'>
                     <Col xs={12} sm={6}>
                       <h5>{item.title}</h5>
                       {item.allDay ? (
@@ -228,7 +230,7 @@ const Admin = () => {
                         <>
                           <h6>Date: {handleDate(item.start)}</h6>
                           <h6>
-                            Start: {handleTime(item.start)} End:{" "}
+                            Start: {handleTime(item.start)} End:{' '}
                             {handleTime(item.end)}
                           </h6>
                         </>
@@ -237,7 +239,7 @@ const Admin = () => {
                       <b>Description:</b>
                       <p>{item.description}</p>
                     </Col>
-                    <Col xs={12} sm={6} className="text-end">
+                    <Col xs={12} sm={6} className='text-end'>
                       <Button onClick={(e) => handleDeleteEvent(e, item.id)}>
                         Delete Event
                       </Button>
@@ -248,6 +250,7 @@ const Admin = () => {
             </ListGroup>
           </Col>
         </Row>
+        <AdminTabs />
       </Container>
     </div>
   );
