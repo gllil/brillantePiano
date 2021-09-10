@@ -17,6 +17,7 @@ const ManageCalendar = () => {
   const [calendarForm, setCalendarForm] = useState({});
   const [successAddEvent, setsuccessAddEvent] = useState(false);
   const [addEventLoad, setAddEventLoad] = useState(false);
+  const [requiredTime, setRequiredTime] = useState(true);
   const [allDayChecked, setAllDayChecked] = useState(false);
   const calendarRef = firestore.collection("calendarItems");
   const addEventForm = document.getElementById("addEventForm");
@@ -42,11 +43,22 @@ const ManageCalendar = () => {
   const handleCalendarFormChange = (e) => {
     const { name, value } = e.target;
     setCalendarForm({ ...calendarForm, [name]: value });
+    if (allDayChecked) {
+      setRequiredTime(false);
+    } else {
+      setRequiredTime(true);
+    }
   };
 
   const handleCheckBox = (e) => {
     setAllDayChecked(e.target.checked);
+    if (allDayChecked) {
+      setRequiredTime(false);
+    } else {
+      setRequiredTime(true);
+    }
   };
+  console.log(requiredTime);
 
   const handleCalendarFormSubmit = (e) => {
     e.preventDefault();
@@ -152,6 +164,7 @@ const ManageCalendar = () => {
                     disabled={allDayChecked}
                     type="time"
                     name="startTime"
+                    required={requiredTime}
                   />
                 </Form.Group>
               </Col>
@@ -162,6 +175,7 @@ const ManageCalendar = () => {
                     disabled={allDayChecked}
                     type="time"
                     name="endTime"
+                    required={requiredTime}
                   />
                 </Form.Group>
               </Col>
