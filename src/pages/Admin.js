@@ -1,7 +1,7 @@
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { auth } from "../firebase/config";
 
-import AdminTabs from "../components/AdminTabs";
+// import AdminTabs from "../components/AdminTabs";
 import ManageCalendar from "../components/ManageCalendar";
 
 const Admin = () => {
@@ -26,7 +26,7 @@ const Admin = () => {
           </Col>
         </Row>
         <ManageCalendar />
-        <AdminTabs />
+        {/* <AdminTabs /> */}
       </Container>
     </div>
   );
