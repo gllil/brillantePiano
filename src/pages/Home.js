@@ -1,4 +1,5 @@
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import useFirestore from "../hooks/useFirestore";
 import educationIcon from "../assets/icons/conference-education.png";
 import inspirationIcon from "../assets/icons/inspiration.png";
 import keyboardPianoIcon from "../assets/icons/keyboard-piano.png";
@@ -7,15 +8,14 @@ import waterColorPiano from "../assets/images/piano3.png";
 import Contact from "../components/Contact";
 
 const Home = () => {
+  const { mainPageContent } = useFirestore("mainPage");
+
   return (
     <Container className="mb-3">
       <Row className="mt-5">
         <Col xs={12} lg={5}>
-          <h2>Music is meant to be enjoyed.</h2>
-          <h6 className="mt-3">
-            I teach technique, reading, composition, theory, and performance
-            pieces so each student can progress and love what they do.
-          </h6>
+          <h2>{mainPageContent.title}</h2>
+          <h6 className="mt-3">{mainPageContent.subtitle}</h6>
           <Button className="mt-3" href="#contactMe">
             Get Started
           </Button>
