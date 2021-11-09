@@ -1,5 +1,6 @@
 import { Tab, Tabs } from "react-bootstrap";
 import ManageCalendar from "./ManageCalendar";
+import ManageMainPage from "./ManageMainPage";
 import ManageTuition from "./ManageTuition";
 
 function AdminTabs() {
@@ -7,6 +8,9 @@ function AdminTabs() {
     <Tabs id="controlled-tab" defaultActiveKey="calendar" className="mb-3">
       <Tab eventKey="calendar" title="Calendar">
         <ManageCalendar />
+      </Tab>
+      <Tab eventKey="mainPage" title="Main Page">
+        <ManageMainPage />
       </Tab>
       <Tab eventKey="tuition" title="Tuition" disabled>
         <ManageTuition />

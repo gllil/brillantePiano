@@ -10,8 +10,6 @@ const ManageTuition = () => {
 
   const tuitionCollection = firestore.collection("tuition");
 
-  console.log(tuitionItems);
-
   const tuitionForm = document.getElementById("tuitionForm");
 
   const handleFormChange = (e) => {

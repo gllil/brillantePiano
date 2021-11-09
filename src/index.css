@@ -37,6 +37,11 @@ body {
   font-size: large;
 }
 
+.success {
+  color: green;
+  font-size: large;
+}
+
 h6 {
   color: #9899ac;
 }

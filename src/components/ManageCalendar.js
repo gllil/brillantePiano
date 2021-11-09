@@ -23,8 +23,6 @@ const ManageCalendar = () => {
   const [pastEvents, setPastEvents] = useState(false);
   const calendarRef = firestore.collection("calendarItems");
   const addEventForm = document.getElementById("addEventForm");
-  console.log(calendarItems);
-  console.log(pastEvents);
 
   const filtertedDate = calendarItems.filter(
     (item) => DateTime.fromISO(item.start) >= DateTime.now()
