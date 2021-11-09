@@ -7,6 +7,7 @@ import {
   Button,
   Spinner,
   ListGroup,
+  ToggleButton,
 } from "react-bootstrap";
 import { firestore } from "../firebase/config";
 import { DateTime } from "luxon";
@@ -19,8 +20,15 @@ const ManageCalendar = () => {
   const [addEventLoad, setAddEventLoad] = useState(false);
   const [requiredTime, setRequiredTime] = useState(true);
   const [allDayChecked, setAllDayChecked] = useState(false);
+  const [pastEvents, setPastEvents] = useState(false);
   const calendarRef = firestore.collection("calendarItems");
   const addEventForm = document.getElementById("addEventForm");
+  console.log(calendarItems);
+  console.log(pastEvents);
+
+  const filtertedDate = calendarItems.filter(
+    (item) => DateTime.fromISO(item.start) >= DateTime.now()
+  );
 
   const handleDate = (dateStr) => {
     let dateObj = DateTime.fromISO(dateStr);
@@ -58,7 +66,6 @@ const ManageCalendar = () => {
       setRequiredTime(true);
     }
   };
-  console.log(requiredTime);
 
   const handleCalendarFormSubmit = (e) => {
     e.preventDefault();
@@ -208,38 +215,93 @@ const ManageCalendar = () => {
       </Row>
       <Row>
         <Col>
+          <Row>
+            <Col className="text-center mb-3">
+              <ToggleButton
+                type="checkbox"
+                checked={pastEvents}
+                onClick={() => setPastEvents(!pastEvents)}
+              >
+                {pastEvents ? "Hide Past Events" : "Show Past Events"}
+              </ToggleButton>
+            </Col>
+          </Row>
+
           <ListGroup
             className="mb-3 overflow-auto"
             style={{ maxHeight: "1000px" }}
           >
-            {calendarItems.map((item) => (
-              <ListGroup.Item key={item.id}>
-                <Row className="align-items-center">
-                  <Col xs={12} sm={6}>
-                    <h5>{item.title}</h5>
-                    {item.allDay ? (
-                      <h6>Date: {handleDate(item.start)}</h6>
-                    ) : (
-                      <>
-                        <h6>Date: {handleDate(item.start)}</h6>
-                        <h6>
-                          Start: {handleTime(item.start)} End:{" "}
-                          {handleTime(item.end)}
-                        </h6>
-                      </>
-                    )}
+            {pastEvents
+              ? calendarItems.map((item) => (
+                  <ListGroup.Item key={item.id}>
+                    <Row className="align-items-center">
+                      <Col xs={12} sm={6}>
+                        <h5>{item.title}</h5>
+                        {item.allDay ? (
+                          <h6>Date: {handleDate(item.start)}</h6>
+                        ) : (
+                          <>
+                            <h6>Date: {handleDate(item.start)}</h6>
+                            <h6>
+                              Start: {handleTime(item.start)} End:{" "}
+                              {handleTime(item.end)}
+                            </h6>
+                          </>
+                        )}
 
-                    <b>Description:</b>
-                    <p>{item.description}</p>
-                  </Col>
-                  <Col xs={12} sm={6} className="text-end">
-                    <Button onClick={(e) => handleDeleteEvent(e, item.id)}>
-                      Delete Event
-                    </Button>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
+                        <b>Description:</b>
+                        <p>
+                          {item.description.split("\n").map((paragraph, i) => (
+                            <span key={i}>
+                              {paragraph}
+                              <br />
+                            </span>
+                          ))}
+                        </p>
+                      </Col>
+                      <Col xs={12} sm={6} className="text-end">
+                        <Button onClick={(e) => handleDeleteEvent(e, item.id)}>
+                          Delete Event
+                        </Button>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                ))
+              : filtertedDate.map((item) => (
+                  <ListGroup.Item key={item.id}>
+                    <Row className="align-items-center">
+                      <Col xs={12} sm={6}>
+                        <h5>{item.title}</h5>
+                        {item.allDay ? (
+                          <h6>Date: {handleDate(item.start)}</h6>
+                        ) : (
+                          <>
+                            <h6>Date: {handleDate(item.start)}</h6>
+                            <h6>
+                              Start: {handleTime(item.start)} End:{" "}
+                              {handleTime(item.end)}
+                            </h6>
+                          </>
+                        )}
+
+                        <b>Description:</b>
+                        <p>
+                          {item.description.split("\n").map((paragraph, i) => (
+                            <span key={i}>
+                              {paragraph}
+                              <br />
+                            </span>
+                          ))}
+                        </p>
+                      </Col>
+                      <Col xs={12} sm={6} className="text-end">
+                        <Button onClick={(e) => handleDeleteEvent(e, item.id)}>
+                          Delete Event
+                        </Button>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                ))}
           </ListGroup>
         </Col>
       </Row>

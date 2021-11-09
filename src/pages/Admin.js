@@ -1,8 +1,7 @@
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { auth } from "../firebase/config";
 
-// import AdminTabs from "../components/AdminTabs";
-import ManageCalendar from "../components/ManageCalendar";
+import AdminTabs from "../components/AdminTabs";
 
 const Admin = () => {
   const handleLogOut = (e) => {
@@ -25,8 +24,8 @@ const Admin = () => {
             <h2>Manage Page</h2>
           </Col>
         </Row>
-        <ManageCalendar />
-        {/* <AdminTabs /> */}
+
+        <AdminTabs />
       </Container>
     </div>
   );

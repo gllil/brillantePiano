@@ -75,7 +75,15 @@ const Calendar = () => {
             </>
           )}
 
-          <h5>{calendarItem.description}</h5>
+          <h5>
+            {calendarItem.description &&
+              calendarItem.description.split("\n").map((paragraph, i) => (
+                <span key={i}>
+                  {paragraph}
+                  <br />
+                </span>
+              ))}
+          </h5>
         </Modal.Body>
       </Modal>
     </Container>

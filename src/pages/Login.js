@@ -6,12 +6,14 @@ import { AuthContext } from "../auth/Auth";
 
 const Login = ({ history }) => {
   const [loginForm, setLoginForm] = useState({});
+  const [error, setError] = useState(null);
   const loginform = document.getElementById("loginForm");
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
 
     setLoginForm({ ...loginForm, [name]: value });
+    setError(null);
   };
 
   const handleFormSubmit = (e) => {
@@ -23,7 +25,10 @@ const Login = ({ history }) => {
         history.push("/admin");
         console.log("login successful");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
   };
 
   const { currentUser } = useContext(AuthContext);
@@ -58,6 +63,11 @@ const Login = ({ history }) => {
                 Login
               </Button>
             </Form>
+            <Row>
+              <Col className="text-center mt-3">
+                <p className="error">{error}</p>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

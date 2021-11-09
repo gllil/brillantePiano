@@ -10,20 +10,20 @@ font-family: "Averia Serif Libre", cursive;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 body {
-  font-family: 'Averia Serif Libre', cursive;
+  font-family: "Averia Serif Libre", cursive;
   background: fixed
     linear-gradient(to top, rgba(95, 222, 220, 0.2), rgba(95, 222, 220, 0));
   background-position: center;
@@ -32,12 +32,17 @@ body {
   overflow-x: hidden;
 }
 
+.error {
+  color: red;
+  font-size: large;
+}
+
 h6 {
   color: #9899ac;
 }
 
 .logo-font {
-  font-family: 'Averia Serif Libre', cursive;
+  font-family: "Averia Serif Libre", cursive;
 }
 
 .attributeCards {
@@ -64,6 +69,7 @@ h6 {
   border-color: #bf5f47;
 }
 
+.btn-check:checked + .btn-primary,
 .btn:hover {
   border-color: #bf5f47;
   background-color: #bf5f47;
