@@ -4,8 +4,9 @@ import { firestore } from "../firebase/config";
 import useFirestore from "../hooks/useFirestore";
 
 const ManageMainPage = () => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
   const mainPageRef = firestore.collection("mainPage");
   const { mainPageContent } = useFirestore("mainPage");
   const mainForm = document.getElementById("mainForm");
@@ -18,15 +19,20 @@ const ManageMainPage = () => {
         .set(form, { merge: true })
         .then(() => {
           setSuccess("Main Page Content has been updated successfully!");
-          setForm({});
+          setForm(null);
           mainForm.reset();
           setTimeout(() => setSuccess(null), 5000);
-        });
+        })
+        .catch((err) => setError(err.message));
+    } else {
+      setError("Form cannot be blank");
+      setTimeout(() => setError(null), 10000);
     }
   };
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    setError(null);
   };
 
   return (
@@ -37,7 +43,7 @@ const ManageMainPage = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12} sm={6}>
           <em>Title</em>
           <h2>{mainPageContent.title}</h2>
           <em>Subtitle</em>
@@ -49,6 +55,12 @@ const ManageMainPage = () => {
           <Row>
             <Col className="text-center mt-5">
               <h4>Edit Main Page Form</h4>
+              <h6>
+                <em>
+                  Add new content to the Title or Subtitle and click update to
+                  replace existing content.
+                </em>
+              </h6>
             </Col>
           </Row>
           <Form
@@ -75,6 +87,11 @@ const ManageMainPage = () => {
           <Row>
             <Col className="success mt-3 text-center">
               <p>{success}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="error mt-3 text-center">
+              <p>{error}</p>
             </Col>
           </Row>
         </Col>

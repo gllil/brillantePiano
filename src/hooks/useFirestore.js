@@ -5,9 +5,12 @@ const useFirestore = (collection) => {
   const [calendarItems, setCalendarItems] = useState([]);
   const [tuitionItems, setTuitionItems] = useState([]);
   const [mainPageContent, setMainPageContent] = useState({});
+  const [policyPageItems, setPolicyPageItems] = useState([]);
+  const [policyPageDetails, setPolicyPageDetails] = useState({});
 
   useEffect(() => {
     const collectionRef = firestore.collection(collection);
+
     if (collection === "calendarItems") {
       collectionRef.orderBy("start", "asc").onSnapshot((snap) => {
         let events = [];
@@ -15,6 +18,24 @@ const useFirestore = (collection) => {
           events.push({ ...doc.data(), id: doc.id });
         });
         setCalendarItems(events);
+      });
+    }
+    if (collection === "policyPage") {
+      collectionRef
+        .doc("policies")
+        .collection("policyItems")
+        .orderBy("orderNum")
+        .onSnapshot((snap) => {
+          let policies = [];
+          snap.forEach((doc) => {
+            policies.push({ ...doc.data(), id: doc.id });
+          });
+
+          setPolicyPageItems(policies);
+        });
+
+      collectionRef.doc("policyPageDetails").onSnapshot((doc) => {
+        setPolicyPageDetails(doc.data());
       });
     }
     if (collection === "tuition") {
@@ -32,7 +53,13 @@ const useFirestore = (collection) => {
       });
     }
   }, [collection]);
-  return { calendarItems, tuitionItems, mainPageContent };
+  return {
+    calendarItems,
+    tuitionItems,
+    mainPageContent,
+    policyPageItems,
+    policyPageDetails,
+  };
 };
 
 export default useFirestore;

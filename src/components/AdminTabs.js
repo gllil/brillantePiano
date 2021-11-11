@@ -1,6 +1,7 @@
 import { Tab, Tabs } from "react-bootstrap";
 import ManageCalendar from "./ManageCalendar";
 import ManageMainPage from "./ManageMainPage";
+import ManagePolicy from "./ManagePolicy";
 import ManageTuition from "./ManageTuition";
 
 function AdminTabs() {
@@ -12,10 +13,12 @@ function AdminTabs() {
       <Tab eventKey="mainPage" title="Main Page">
         <ManageMainPage />
       </Tab>
+      <Tab eventKey="policy" title="Policy">
+        <ManagePolicy />
+      </Tab>
       <Tab eventKey="tuition" title="Tuition" disabled>
         <ManageTuition />
       </Tab>
-      <Tab eventKey="policy" title="Policy" disabled></Tab>
       <Tab eventKey="about" title="About" disabled></Tab>
       <Tab eventKey="faqs" title="FAQs" disabled></Tab>
     </Tabs>
