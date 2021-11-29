@@ -1,4 +1,5 @@
 # Brillante Piano Studio
+<img src="https://github.com/gllil/brillantePiano/blob/main/public/images/bps_screenshot.png" alt="Brillante piano studio website" >
 
 # Link
 
