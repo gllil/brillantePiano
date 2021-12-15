@@ -1,6 +1,9 @@
-import { Row, Col, Container, Card, Badge, Button } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
+import TuitionCard from "../components/TuitionCard";
+import useFirestore from "../hooks/useFirestore";
 
 const Tuition = () => {
+  const { tuitionItems } = useFirestore("tuition");
   return (
     <div className="shortPageContainer mb-5">
       <Container className="tuitionDetailsBox">
@@ -10,74 +13,18 @@ const Tuition = () => {
           </Col>
         </Row>
         <Row className="cardsWrapper justify-content-center mt-5">
-          <Col xs={12} sm={6} xl={3} className="mt-4 ">
-            <Card className="tuitionCards">
-              <h2 className="text-center badgeWrapper">
-                <Badge pill>30 Minute Lessons</Badge>
-              </h2>
-              <Card.Body className="align-items-center">
-                <Card.Title as="h3">Academic Year</Card.Title>
-                <Card.Title as="h4">$80/month</Card.Title>
-                <Card.Subtitle as="em">$720/academic year</Card.Subtitle>
-                <Card.Text className="align-self-end">
-                  <Button size="sm" className="mt-2" href="/#contactMe">
-                    Get Started
-                  </Button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} sm={6} xl={3} className="mt-4 ">
-            <Card className="tuitionCards">
-              <h2 className="text-center badgeWrapper">
-                <Badge pill>30 Minute Lessons</Badge>
-              </h2>
-              <Card.Body className="align-items-center">
-                <Card.Title as="h3">Summer Break</Card.Title>
-                <Card.Title as="h4">$165</Card.Title>
-                <Card.Subtitle as="em">6-8 Summer lessons</Card.Subtitle>
-                <Card.Text className="align-self-end">
-                  <Button size="sm" className="mt-2" href="/#contactMe">
-                    Get Started
-                  </Button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} sm={6} xl={3} className="mt-4 ">
-            <Card className="tuitionCards">
-              <h2 className="text-center badgeWrapper">
-                <Badge pill>45 Minute Lessons</Badge>
-              </h2>
-              <Card.Body className="align-items-center">
-                <Card.Title as="h3">Academic Year</Card.Title>
-                <Card.Title as="h4">$100/month</Card.Title>
-                <Card.Subtitle as="em">$900/academic year</Card.Subtitle>
-                <Card.Text className="align-self-end">
-                  <Button size="sm" className="mt-2" href="/#contactMe">
-                    Get Started
-                  </Button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} sm={6} xl={3} className="mt-4 ">
-            <Card className="tuitionCards">
-              <h2 className="text-center badgeWrapper">
-                <Badge pill>45 Minute Lessons</Badge>
-              </h2>
-              <Card.Body className="align-items-center">
-                <Card.Title as="h3">Summer Break</Card.Title>
-                <Card.Title as="h4">$210</Card.Title>
-                <Card.Subtitle as="em">6-8 Summer lessons</Card.Subtitle>
-                <Card.Text>
-                  <Button size="sm" className="mt-2" href="/#contactMe">
-                    Get Started
-                  </Button>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
+          {tuitionItems &&
+            tuitionItems.map((items) => (
+              <TuitionCard
+                key={items.id}
+                docId={items.id}
+                cardBadge={items.badge}
+                titleOne={items.timeOfYear}
+                titleTwo={items.price}
+                subtitle={items.subPrice}
+                live={true}
+              />
+            ))}
         </Row>
         <Row className="mt-5">
           <Col className="text-center">

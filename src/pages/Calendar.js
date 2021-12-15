@@ -11,8 +11,6 @@ const Calendar = () => {
   const [calendarItem, setCalendarItem] = useState({});
   const [eventModalOpen, setEventModalOpen] = useState(false);
 
-  console.log(calendarItems);
-
   const handleDate = (dateStr) => {
     let dateObj = DateTime.fromISO(dateStr);
     let newFormat = dateObj.toLocaleString(DateTime.DATE_FULL);

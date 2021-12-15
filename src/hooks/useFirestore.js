@@ -39,7 +39,7 @@ const useFirestore = (collection) => {
       });
     }
     if (collection === "tuition") {
-      collectionRef.onSnapshot((snap) => {
+      collectionRef.orderBy("createdAt", "asc").onSnapshot((snap) => {
         let items = [];
         snap.forEach((doc) => {
           items.push({ ...doc.data(), id: doc.id });

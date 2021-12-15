@@ -16,7 +16,7 @@ function AdminTabs() {
       <Tab eventKey="policy" title="Policy">
         <ManagePolicy />
       </Tab>
-      <Tab eventKey="tuition" title="Tuition" disabled>
+      <Tab eventKey="tuition" title="Tuition">
         <ManageTuition />
       </Tab>
       <Tab eventKey="about" title="About" disabled></Tab>

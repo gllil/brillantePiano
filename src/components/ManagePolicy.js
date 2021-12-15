@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { firestore } from "../firebase/config";
 import useFirestore from "../hooks/useFirestore";
 
@@ -32,7 +32,6 @@ const ManagePolicy = () => {
     setSize(policyPageItems.length);
   }, [policyPageItems]);
 
-  console.log(size, final);
   const pushPolicy = (order) => {
     policiesRef
       .doc("policies")
@@ -212,34 +211,41 @@ const ManagePolicy = () => {
                 onChange={handleUpdatePolicyForm}
               >
                 <Row>
-                  <Col xs={12} sm={10}>
+                  {/* <Col >
                     <Form.Group>
+                      
+                    </Form.Group>
+                  </Col> */}
+                  <Col className="text-end">
+                    <InputGroup>
                       <Form.Control
                         defaultValue={policyItem.policy}
                         as="textarea"
                         name="policy"
                       />
-                    </Form.Group>
+                      <Button
+                        size="sm"
+                        onClick={(e) =>
+                          handlePolicyUpdateClick(e, policyItem.id)
+                        }
+                        variant="secondary"
+                      >
+                        Update
+                      </Button>
+                      <Button
+                        size="sm"
+                        onClick={(e) =>
+                          handlePolicyDeleteClick(e, policyItem.id)
+                        }
+                        variant="secondary"
+                      >
+                        Delete
+                      </Button>
+                    </InputGroup>
                   </Col>
-                  <Col className="text-end">
-                    <Button
-                      size="sm"
-                      onClick={(e) => handlePolicyUpdateClick(e, policyItem.id)}
-                      className="mt-3"
-                    >
-                      Update
-                    </Button>
-                  </Col>
-                  <Col className="text-end">
-                    <Button
-                      size="sm"
-                      onClick={(e) => handlePolicyDeleteClick(e, policyItem.id)}
-                      className="mt-3"
-                      variant="secondary"
-                    >
-                      Delete
-                    </Button>
-                  </Col>
+                  {/* <Col className="text-end">
+                   
+                  </Col> */}
                 </Row>
               </Form>
             ))}

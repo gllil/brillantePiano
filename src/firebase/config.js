@@ -15,13 +15,17 @@ const firebaseConfig = {
 };
 
 //called firebase.intializeApp to initialize app
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
+}
 
 //declaring variables for each of the the methods we will use to call the data we need
 const firestore = firebase.firestore();
 const storage = firebase.storage();
 const auth = firebase.auth();
 const functions = firebase.functions();
-
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 //exporting deconstructed variables for multiple reuse in other components
-export { firestore, storage, auth, functions };
+export { firestore, storage, auth, functions, timestamp };
