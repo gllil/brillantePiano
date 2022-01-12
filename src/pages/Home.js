@@ -6,16 +6,23 @@ import keyboardPianoIcon from "../assets/icons/keyboard-piano.png";
 import musicFilesIcon from "../assets/icons/music-files.png";
 import waterColorPiano from "../assets/images/piano3.png";
 import Contact from "../components/Contact";
+import SkeletonArticle from "../skeletons/SkeletonArticle";
 
 const Home = () => {
   const { mainPageContent } = useFirestore("mainPage");
-
+  console.log(mainPageContent);
   return (
     <Container className="mb-3">
       <Row className="mt-5">
         <Col xs={12} lg={5}>
-          <h2>{mainPageContent.title}</h2>
-          <h6 className="mt-3">{mainPageContent.subtitle}</h6>
+          {mainPageContent && (
+            <>
+              <h2>{mainPageContent.title}</h2>
+              <h6 className="mt-3">{mainPageContent.subtitle}</h6>
+            </>
+          )}
+
+          {!mainPageContent && <SkeletonArticle theme="light" />}
           <Button className="mt-3" href="#contactMe">
             Get Started
           </Button>

@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./auth/Auth";
 import PrivateRoute from "./auth/PrivateRoute";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <PrivateRoute exact path="/admin" component={Admin} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route path="*" component={NotFound} />
         </Switch>
         <Footer />
       </Router>

@@ -1,6 +1,7 @@
 import { Row, Col, Container } from "react-bootstrap";
 import TuitionCard from "../components/TuitionCard";
 import useFirestore from "../hooks/useFirestore";
+import SkeletonCard from "../skeletons/SkeletonCard";
 
 const Tuition = () => {
   const { tuitionItems } = useFirestore("tuition");
@@ -12,7 +13,7 @@ const Tuition = () => {
             <h2>Tuition</h2>
           </Col>
         </Row>
-        <Row className="cardsWrapper justify-content-center mt-5">
+        <Row className="justify-content-center mt-5">
           {tuitionItems &&
             tuitionItems.map((items) => (
               <TuitionCard
@@ -25,7 +26,10 @@ const Tuition = () => {
                 live={true}
               />
             ))}
+          {!tuitionItems &&
+            [1, 2, 3, 4].map((n) => <SkeletonCard key={n} theme="light" />)}
         </Row>
+
         <Row className="mt-5">
           <Col className="text-center">
             <p className="text-muted">

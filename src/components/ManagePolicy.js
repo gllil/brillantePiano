@@ -15,10 +15,8 @@ const ManagePolicy = () => {
   const [errorSubtitle, setErrorSubtitle] = useState(null);
   const [successUpdate, setSuccessUpdate] = useState(null);
   const [errorUpdate, setErrorUpdate] = useState(null);
-  const [final, setFinal] = useState(
-    policyPageItems[policyPageItems.length - 1]
-  );
-  const [size, setSize] = useState(policyPageItems.length);
+  const [final, setFinal] = useState(null);
+  const [size, setSize] = useState(null);
   const addPolicy = document.getElementById("addPolicy");
 
   const handleAddFormChange = (e) => {
@@ -28,8 +26,8 @@ const ManagePolicy = () => {
   };
 
   useEffect(() => {
-    setFinal(policyPageItems[policyPageItems.length - 1]);
-    setSize(policyPageItems.length);
+    policyPageItems && setFinal(policyPageItems[policyPageItems.length - 1]);
+    policyPageItems && setSize(policyPageItems.length);
   }, [policyPageItems]);
 
   const pushPolicy = (order) => {
@@ -163,7 +161,10 @@ const ManagePolicy = () => {
                     <Form.Group>
                       <Form.Label>Edit Page Subtitle</Form.Label>
                       <Form.Control
-                        defaultValue={policyPageDetails.policyPageSubtitle}
+                        defaultValue={
+                          policyPageDetails &&
+                          policyPageDetails.policyPageSubtitle
+                        }
                         as="textarea"
                         name="policyPageSubtitle"
                       />
@@ -183,7 +184,7 @@ const ManagePolicy = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="text-center mt-2">
+            <Col className="text-center mt-5">
               <h4>Edit Policies</h4>
               <h6>
                 <em>
@@ -193,17 +194,8 @@ const ManagePolicy = () => {
               </h6>
             </Col>
           </Row>
-          <Row>
-            <Col className="success m-1 text-center">
-              <p>{successUpdate}</p>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="error m-1 text-center">
-              <p>{errorUpdate}</p>
-            </Col>
-          </Row>
-          {policyPageItems.length > 0 &&
+
+          {policyPageItems &&
             policyPageItems.map((policyItem) => (
               <Form
                 className="mt-1"
@@ -249,6 +241,16 @@ const ManagePolicy = () => {
                 </Row>
               </Form>
             ))}
+        </Col>
+      </Row>
+      <Row>
+        <Col className="success m-1 text-center">
+          <p>{successUpdate}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="error m-1 text-center">
+          <p>{errorUpdate}</p>
         </Col>
       </Row>
       <Row>

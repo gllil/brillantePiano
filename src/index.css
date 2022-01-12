@@ -245,6 +245,16 @@ a:hover {
   place-items: center;
 }
 
+.notFoundImage {
+  width: 100%;
+}
+
+@media only screen and (max-width: 960px) {
+  .shortPageContainer {
+    min-height: calc(100vh - 235px);
+  }
+}
+
 @media only screen and (max-width: 575px) {
   .badgeWrapper {
     margin-top: -10px;

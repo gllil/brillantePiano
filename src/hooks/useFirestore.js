@@ -3,10 +3,10 @@ import { firestore } from "../firebase/config";
 
 const useFirestore = (collection) => {
   const [calendarItems, setCalendarItems] = useState([]);
-  const [tuitionItems, setTuitionItems] = useState([]);
-  const [mainPageContent, setMainPageContent] = useState({});
-  const [policyPageItems, setPolicyPageItems] = useState([]);
-  const [policyPageDetails, setPolicyPageDetails] = useState({});
+  const [tuitionItems, setTuitionItems] = useState(null);
+  const [mainPageContent, setMainPageContent] = useState(null);
+  const [policyPageItems, setPolicyPageItems] = useState(null);
+  const [policyPageDetails, setPolicyPageDetails] = useState(null);
 
   useEffect(() => {
     const collectionRef = firestore.collection(collection);

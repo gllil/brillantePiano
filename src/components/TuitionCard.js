@@ -80,7 +80,7 @@ const TuitionCard = ({
   };
 
   return (
-    <Col xs={12} sm={6} xl={3} className="mt-4 ">
+    <Col xs={12} sm={6} xl={3} className="mt-4">
       <Card className="tuitionCards">
         <h2 className="text-center badgeWrapper">
           <Badge pill>{cardBadge}</Badge>

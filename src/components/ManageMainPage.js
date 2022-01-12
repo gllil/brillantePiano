@@ -45,9 +45,9 @@ const ManageMainPage = () => {
       <Row>
         <Col xs={12} sm={6}>
           <em>Title</em>
-          <h2>{mainPageContent.title}</h2>
+          <h2>{mainPageContent && mainPageContent.title}</h2>
           <em>Subtitle</em>
-          <h6>{mainPageContent.subtitle}</h6>
+          <h6>{mainPageContent && mainPageContent.subtitle}</h6>
         </Col>
       </Row>
       <Row>
