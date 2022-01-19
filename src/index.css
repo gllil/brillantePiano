@@ -73,6 +73,7 @@ h6 {
 .btn {
   border-color: #e96c4e;
   background-color: #e96c4e;
+  color: #fff;
 }
 
 .btn:focus {
@@ -100,9 +101,13 @@ a {
   text-decoration: none;
 }
 
-a:link {
+/* a:link {
   color: #000000;
   text-decoration: none;
+} */
+
+.fc-daygrid-event.fc-event-end {
+  cursor: pointer;
 }
 
 a:hover {
@@ -115,11 +120,6 @@ a:hover {
 
 .tuitionDetailsBox {
   padding-top: 100px;
-}
-
-.badge {
-  background-color: #000;
-  color: #fff;
 }
 
 .badgeWrapper {
